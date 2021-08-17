@@ -10,11 +10,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Employee {
+public class Myapproval {
 
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long employeeId;
+    @Column
+	private Long Id;
+
+    @Column
+	private String empId;
 
 	@Column
 	private String level;
@@ -29,15 +33,21 @@ public class Employee {
 	@JoinColumn(name = "myprofileId", updatable = false, insertable = true)
 	private Myprofile myprofile;
 
-	public Employee() {
+	public Myapproval() {
 		super();
 	}
 
-    public Long getEId() {
-        return employeeId;
+    public Long getId() {
+        return Id;
     }
-    public void setEId(Long employeeId) {
-        this.employeeId = employeeId;
+    public void setId(Long id) {
+        Id = id;
+    }
+    public String getEmpId() {
+        return empId;
+    }
+    public void setEmpId(String empId) {
+        this.empId = empId;
     }
     public String getLevel() {
         return level;

@@ -16,40 +16,49 @@ import javax.persistence.OneToMany;
 public class Myprofile {
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
+    private Long Id;
+
 	@Column
-	private Long myprofileId;
+	private String myprofileId;
 
     @Column
-	private String empname;
+	private String myprofilename;
 
 	@Column
 	private String designation;
 
 	@Column
-	private String bussiness;
+	private String bussinessvertical;
 
 	@Column
-	private Boolean project;
+	private String project;
     
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	@JoinColumn(name = "myprofileId")
-	private List<Employee> employee; 
+	private List<Myapproval> myapproval; 
 	
 	public Myprofile() {
 		super();
 	}
 
     public Long getId() {
+        return Id;
+    }
+    public void setId(Long id) {
+        Id = id;
+    }
+    public String getMyprofileId() {
         return myprofileId;
     }
-    public void setId(Long myprofileId) {
+    public void setMyprofileId(String myprofileId) {
         this.myprofileId = myprofileId;
     }
-    public String getEmpname() {
-        return empname;
+    public String getMyprofilename() {
+        return myprofilename;
     }
-    public void setEmpname(String empname) {
-        this.empname = empname;
+    public void setmyprofilename(String myprofilename) {
+        this.myprofilename = myprofilename;
     }
     public String getDesignation() {
         return designation;
@@ -57,25 +66,25 @@ public class Myprofile {
     public void setDesignation(String designation) {
         this.designation = designation;
     }
-    public String getBussiness() {
-        return bussiness;
+    public String getBussinessvertical() {
+        return bussinessvertical;
     }
-    public void setBussiness(String bussiness) {
-        this.bussiness = bussiness;
+    public void setBussinessvertical(String bussinessvertical) {
+        this.bussinessvertical = bussinessvertical;
     }
-    public Boolean getProject() {
+    public String getProject() {
         return project;
     }
-    public void setProject(Boolean project) {
+    public void setProject(String project) {
         this.project = project;
     }
     
-    public List<Employee> getEmployee() {
-		return employee;
+    public List<Myapproval> getMyapproval() {
+		return myapproval;
 	}
 
-	public void setEmployee(List<Employee> employee) {
-		this.employee = employee;
+	public void setMyapproval(List<Myapproval> myapproval) {
+		this.myapproval = myapproval;
 	}
 
 }

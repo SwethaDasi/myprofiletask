@@ -35,7 +35,7 @@ public class MyprofileController {
     public ResponseEntity<?> post(@RequestBody Myprofile myprofile, UriComponentsBuilder ucBuilder) {
         myprofileRepository.save(myprofile);
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ucBuilder.path("/get/{id}").buildAndExpand(myprofile.getId()).toUri());
+        headers.setLocation(ucBuilder.path("/get/{id}").buildAndExpand(myprofile.getMyprofileId()).toUri());
         return new ResponseEntity<>(headers, HttpStatus.CREATED);
 
     }
