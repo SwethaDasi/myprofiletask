@@ -1,7 +1,6 @@
 package com.kgisl.myprofiletask.entity;
 
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,52 +12,36 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Myprofile {
+public class MyProfile {
     @Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private Long Id;
-
-	@Column
-	private String myprofileId;
-
-    @Column
-	private String myprofilename;
-
-	@Column
-	private String designation;
-
-	@Column
-	private String bussinessvertical;
-
-	@Column
-	private String project;
-    
+    private Long profileid;
+    private String empid; 
+    private String empname;
+    private String designation;
+    private String business;
+    private String project;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-	@JoinColumn(name = "myprofileId")
-	private List<Myapproval> myapproval; 
-	
-	public Myprofile() {
-		super();
-	}
-
-    public Long getId() {
-        return Id;
+    @JoinColumn(name = "profileid")
+    private List<MyApproval> myApproval;
+    public Long getProfileid() {
+        return profileid;
     }
-    public void setId(Long id) {
-        Id = id;
+    public void setProfileid(Long profileid) {
+        this.profileid = profileid;
     }
-    public String getMyprofileId() {
-        return myprofileId;
+    public String getEmpid() {
+        return empid;
     }
-    public void setMyprofileId(String myprofileId) {
-        this.myprofileId = myprofileId;
+    public void setEmpid(String empid) {
+        this.empid = empid;
     }
-    public String getMyprofilename() {
-        return myprofilename;
+    public String getEmpname() {
+        return empname;
     }
-    public void setmyprofilename(String myprofilename) {
-        this.myprofilename = myprofilename;
+    public void setEmpname(String empname) {
+        this.empname = empname;
     }
     public String getDesignation() {
         return designation;
@@ -66,11 +49,11 @@ public class Myprofile {
     public void setDesignation(String designation) {
         this.designation = designation;
     }
-    public String getBussinessvertical() {
-        return bussinessvertical;
+    public String getBusiness() {
+        return business;
     }
-    public void setBussinessvertical(String bussinessvertical) {
-        this.bussinessvertical = bussinessvertical;
+    public void setBusiness(String business) {
+        this.business = business;
     }
     public String getProject() {
         return project;
@@ -78,13 +61,10 @@ public class Myprofile {
     public void setProject(String project) {
         this.project = project;
     }
-    
-    public List<Myapproval> getMyapproval() {
-		return myapproval;
-	}
-
-	public void setMyapproval(List<Myapproval> myapproval) {
-		this.myapproval = myapproval;
-	}
-
+    public List<MyApproval> getMyApproval() {
+        return myApproval;
+    }
+    public void setMyApproval(List<MyApproval> myApproval) {
+        this.myApproval = myApproval;
+    }
 }

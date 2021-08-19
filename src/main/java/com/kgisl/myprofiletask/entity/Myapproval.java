@@ -1,74 +1,61 @@
 package com.kgisl.myprofiletask.entity;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-public class Myapproval {
-
+public class MyApproval {
     @Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
-	private Long Id;
-
-    @Column
-	private String empId;
-
-	@Column
-	private String level;
-
-	@Column
-	private String name;
-
-	@Column
-	private String email;
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    private Long id;
+    private String empid;
+    private String approvallevel;  
+    private String managername; 
+    private String manageremail; 
     @ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "myprofileId", updatable = false, insertable = true)
-	private Myprofile myprofile;
-
-	public Myapproval() {
-		super();
-	}
-
+    @JoinColumn(name = "profileid", updatable = false, insertable = true)
+    private MyProfile myProfile;
     public Long getId() {
-        return Id;
+        return id;
     }
     public void setId(Long id) {
-        Id = id;
+        this.id = id;
     }
-    public String getEmpId() {
-        return empId;
+    public String getEmpid() {
+        return empid;
     }
-    public void setEmpId(String empId) {
-        this.empId = empId;
+    public void setEmpid(String empid) {
+        this.empid = empid;
     }
-    public String getLevel() {
-        return level;
+    public String getApprovallevel() {
+        return approvallevel;
     }
-    public void setLevel(String level) {
-        this.level = level;
+    public void setApprovallevel(String approvallevel) {
+        this.approvallevel = approvallevel;
     }
-    public String getName() {
-        return name;
+    public String getManagername() {
+        return managername;
     }
-    public void setName(String name) {
-        this.name = name;
+    public void setManagername(String managername) {
+        this.managername = managername;
     }
-    public String getEmail() {
-        return email;
+    public String getManageremail() {
+        return manageremail;
     }
-    public void setEmail(String email) {
-        this.email = email;
+    public void setManageremail(String manageremail) {
+        this.manageremail = manageremail;
     }
-    public void setMyprofile(Myprofile myprofile) {
-		this.myprofile = myprofile;
+    public MyProfile getMyProfile() {
+        return myProfile;
+    }
+    public void setMyProfile(MyProfile myProfile) {
+        this.myProfile = myProfile;
     }
 }
-

@@ -1,10 +1,8 @@
 package com.kgisl.myprofiletask.controller;
 
 import java.util.List;
-
-import com.kgisl.myprofiletask.entity.Myprofile;
-import com.kgisl.myprofiletask.repository.MyprofileRepository;
-
+import com.kgisl.myprofiletask.entity.MyProfile;
+import com.kgisl.myprofiletask.repository.MyProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -21,23 +19,19 @@ import org.springframework.web.util.UriComponentsBuilder;
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("api/myprofiles")
-public class MyprofileController {
-
+public class MyProfileController {
     @Autowired
-    private MyprofileRepository myprofileRepository;
-
-    @GetMapping("/get")
-    public @ResponseBody ResponseEntity<List<Myprofile>> all() {
-        return new ResponseEntity<>(myprofileRepository.findAll(), HttpStatus.OK);
-    }
-
-    @PostMapping("/post")
-    public ResponseEntity<?> post(@RequestBody Myprofile myprofile, UriComponentsBuilder ucBuilder) {
-        myprofileRepository.save(myprofile);
-        HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ucBuilder.path("/get/{id}").buildAndExpand(myprofile.getMyprofileId()).toUri());
-        return new ResponseEntity<>(headers, HttpStatus.CREATED);
-
-    }
+    private MyProfileRepository myProfileRepository; 
     
+    @GetMapping("/get")
+    public @ResponseBody ResponseEntity<List<MyProfile>> all() {
+        return new ResponseEntity<>(myProfileRepository.findAll(), HttpStatus.OK);
+    }
+    @PostMapping("/post")
+    public ResponseEntity<?> post(@RequestBody MyProfile myProfile, UriComponentsBuilder ucBuilder) {
+        myProfileRepository.save(myProfile);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setLocation(ucBuilder.path("/get/{id}").buildAndExpand(myProfile.getProfileid()).toUri());
+        return new ResponseEntity<>(headers, HttpStatus.CREATED);
+    }
 }

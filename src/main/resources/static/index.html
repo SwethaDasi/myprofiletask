@@ -6,18 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Get My Managers</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/table-to-json@1.0.0/lib/jquery.tabletojson.min.js" integrity="sha256-H8xrCe0tZFi/C2CgxkmiGksqVaxhW0PFcUKZJZo1yNU=" crossorigin="anonymous"></script>
     <script src="index.js"></script>
 </head>
-<body onload="getMyManagers()">
-<h2>Get Managers</h2>
-<table  id="tblManagers" border="1">
-    <tr>
-        <th>Level</th>
-        <th>Name</th>
-        <th>Email</th>
-    </tr>
-    <tbody id="managers"></tbody>
-</table>
-<button onclick="saveMyprofile()">saveMyprofile</button>
+<body>
+    <h3>Get My Managers</h3>
+    <select id="dd" onchange="drpdown()">
+        <option value="" selected disabled hidden>Choose here</option>
+        <option value="swetha.d">swetha.d</option>
+    <option value="nandini.m">nandini.m</option>
+    <option value="mahesh.m">mahesh.m</option>
+    <option value="ashwini.b">ashwini.b</option>
+      </select>
+    <table  id="tblManagers" border="1">
+        <tr>
+            <th>approvallevel</th>
+            <th>empid</th>
+            <th>managername</th>
+            <th>manageremail</th>
+            <th>id</th>
+        </tr>
+        <tbody id="managers"></tbody>
+    </table>
+    <table>
+        <tr>
+            <td></td>
+        </tr>
+    </table>
+    <br>
+    <button onclick="saveMyProfile()">Save MyProfile</button>
 </body>
 </html>
