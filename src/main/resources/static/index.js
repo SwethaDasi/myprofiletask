@@ -102,3 +102,24 @@ const item = {
     console.log(item);
     getMyManagers();
   }
+ 
+function fileupload() {
+  console.log("file upload called");
+  var url = "YOUR-BASE-URL-HERE"; //Like http://localhost:8081
+  var form = $('#form-upload')[0]; //get the form containing the files
+  var data = new FormData(form);
+  $.ajax({
+    url: "/api/files/upload",
+    type: "POST",
+    enctype: 'multipart/form-data',
+    data: data, //pass the form data
+    processData: false,
+    contentType: false,
+    success: function (data) {
+        console.log("Successfully uploaded " + data);
+    },
+    error: function (data) {
+        console.log("upload failed");
+    }
+  });
+} 
